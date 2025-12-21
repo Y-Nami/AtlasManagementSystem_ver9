@@ -59,8 +59,8 @@ class RegisterRequest extends FormRequest
 
     public function messages(){
         return[
-            '*.required' => '必須項目です。',
-            '*.string' => '文字を入力してください。',
+            '*.required' => '必ず入力してください。',
+            '*.string' => ':attributeは文字列である必要があります。',
             '*.min' => ':min文字以上で入力してください。',
             '*.max' => ':max文字以下で入力してください。',
             'over_name_kana.regex' => 'セイはカタカナで入力してください。',

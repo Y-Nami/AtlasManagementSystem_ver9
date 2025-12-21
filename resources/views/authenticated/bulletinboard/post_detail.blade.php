@@ -1,4 +1,13 @@
 <x-sidebar>
+  @if($errors->hasAny(['post_title', 'post_body']))
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      $('[name="post_title"]').val(@json(old('post_title')));
+      $('[name="post_body"]').val(@json(old('post_body')));
+      $('.js-modal').show();
+    });
+  </script>
+  @endif
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
@@ -58,9 +67,15 @@
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
           <input type="text" name="post_title" placeholder="タイトル" class="w-100">
+          @error('post_title')
+          <div>{{ $message }}</div>
+          @enderror
         </div>
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
+          @error('post_body')
+          <div>{{ $message }}</div>
+          @enderror
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
