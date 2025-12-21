@@ -73,4 +73,20 @@ class RegisterRequest extends FormRequest
             'password.confirmed' => 'パスワードが一致していません。'
         ];
     }
+
+    public function attributes(){
+        return [
+            'over_name' => '姓',
+            'under_name' => '名',
+            'over_name_kana' => '姓カナ',
+            'under_name_kana' => '名カナ',
+            'mail_address' => 'メールアドレス',
+            'sex' => '性別',
+            'old_year' => '年',
+            'old_month' => '月',
+            'old_day' => '日',
+            'role' => '役割',
+            'password' => 'パスワード'
+        ];
+    }
 }
