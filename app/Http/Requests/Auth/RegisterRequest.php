@@ -31,37 +31,46 @@ class RegisterRequest extends FormRequest
         return [
             'over_name' => ['required', 'string', 'max:10'],
             'under_name' => ['required', 'string', 'max:10'],
-            'over_name_kana' => ['required', 'string', 'regex:/\A[ァ-ヴー]+\z/u', 'max:30'],
-            'under_name_kana' => ['required', 'string', 'regex:/\A[ァ-ヴー]+\z/u', 'max:30'],
-            'mail_address' => ['required', 'email', 'unique:users,mail_address', 'max:100'],
+            'over_name_kana' => [
+                'required', 'string', 'regex:/\A[ァ-ヴー]+\z/u', 'max:30'
+            ],
+            'under_name_kana' => [
+                'required', 'string', 'regex:/\A[ァ-ヴー]+\z/u', 'max:30'
+            ],
+            'mail_address' => [
+                'required', 'email', 'unique:users,mail_address', 'max:100'
+            ],
             'sex' => ['required', 'regex:/[1,2,3]/'],
             'old_year' => ['required'],
             'old_month' => ['required'],
             'old_day' => ['required'],
             'role' => ['required', 'regex:/[1,2,3,4]/'],
-            'password' => ['required', 'min:8', 'max:30', 'confirmed']
-            //
+            'password' => ['required', 'min:8', 'max:30', 'confirmed'],
+
+            'date' => ['date', 'after:2000-01-01', 'before:today']
         ];
     }
-    public function after(){    //★うまく動いてない！！！
-        return [
-            function($validator){
-                $y = $this->input('old_year');
-                $m = $this->input('old_month');
-                $d = $this->input('old_day');
 
-                if(!checkdate($m, $d, $y)){
-                    $validator->errors()->add('birthday', '存在しない日付です');
-                }
+    public function validationData(){
+        $data = $this->all();
+        $data['date'] = "{$data['old_year']}-{$data['old_month']}-{$data['old_day']}";
+        return $data;
+    }
 
-                $inputDate = $y."-".$m."-".$d;
-                if($inputDate >= date('Y-m-d')){
-                    $validator->errors()->add('birthday', '未来の日付です');
-                }
-                if($inputDate <= '2000-1-1'){
-                    $validator->errors()->add('birthday', '2000年1月1日以降の日付を入力してください');
-                }
-            }
+    public function messages(){
+        return[
+            '*.required' => '必須項目です。',
+            '*.string' => '文字を入力してください。',
+            '*.min' => ':min文字以上で入力してください。',
+            '*.max' => ':max文字以下で入力してください。',
+            'over_name_kana.regex' => 'セイはカタカナで入力してください。',
+            'under_name_kana.regex' => 'メイはカタカナで入力してください。',
+            'mail_address.email' => '有効なメールアドレスを入力してください。',
+            'mail_address.unique' => '既に登録されています。',
+            'date.date' => '入力された日付が存在しません。',
+            'date.before' => ':dateより前の日付を入力してください。',
+            'date.after' => ':dateより後の日付を入力してください。',
+            'password.confirmed' => 'パスワードが一致していません。'
         ];
     }
 }
