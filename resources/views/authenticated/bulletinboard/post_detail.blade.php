@@ -1,25 +1,24 @@
 <x-sidebar>
-  @if($errors->hasAny(['post_title', 'post_body']))
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      $('[name="post_title"]').val(@json(old('post_title')));
-      $('[name="post_body"]').val(@json(old('post_body')));
-      $('.js-modal').show();
-    });
-  </script>
-  @endif
+
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
+          @if($errors->hasAny(['post_title','post_body']))
+            @foreach(['post_title','post_body'] as $field)
+              @foreach($errors->get($field) as $error)
+                {{ $error }}
+                <br>
+              @endforeach
+            @endforeach
+          @endif
           </div>
           @if($post->user_id == auth()->id())
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <!-- <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a> -->
-            <span class="delete-modal-open" post_id="{{ $post->id }}">削除</span>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
           </div>
           @endif
         </div>
@@ -72,36 +71,14 @@
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
           <input type="text" name="post_title" placeholder="タイトル" class="w-100">
-          @error('post_title')
-          <div>{{ $message }}</div>
-          @enderror
         </div>
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
-          @error('post_body')
-          <div>{{ $message }}</div>
-          @enderror
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
           <input type="submit" class="btn btn-primary d-block" value="編集">
-        </div>
-      </div>
-      {{ csrf_field() }}
-    </form>
-  </div>
-</div>
-<!-- 削除モーダル -->
-<div class="modal js-delete-modal">
-  <div class="modal__bg js-delete-modal-close"></div>
-  <div class="modal__content">
-    <p>本当に削除してよろしいですか？</p>
-    <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="get">
-      <div class="w-100">
-        <div class="w-50 m-auto delete-modal-btn d-flex">
-          <a class="js-delete-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-          <input type="submit" class="btn btn-primary d-block" value="削除">
         </div>
       </div>
       {{ csrf_field() }}

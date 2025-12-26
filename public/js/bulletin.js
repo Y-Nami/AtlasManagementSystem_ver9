@@ -63,13 +63,4 @@ $(function () {
     return false;
   });
 
-  $('.delete-modal-open').on('click', function () {
-    $('.js-delete-modal').fadeIn();
-    return false;
-  });
-  $('.delete-modal-close').on('click', function () {
-    $('.js-delete-modal').fadeOut();
-    return false;
-  });
-
 });
