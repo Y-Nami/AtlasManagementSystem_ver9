@@ -40,14 +40,14 @@ class RegisterRequest extends FormRequest
             'mail_address' => [
                 'required', 'email', 'unique:users,mail_address', 'max:100'
             ],
-            'sex' => ['required', 'regex:/[1,2,3]/'],
+            'sex' => ['required', 'in:1,2,3'],
             'old_year' => ['required'],
             'old_month' => ['required'],
             'old_day' => ['required'],
-            'role' => ['required', 'regex:/[1,2,3,4]/'],
+            'role' => ['required', 'in:1,2,3,4'],
             'password' => ['required', 'min:8', 'max:30', 'confirmed'],
 
-            'date' => ['date', 'after:2000-01-01', 'before:today']
+            'date' => ['date', 'after_or_equal:2000-01-01', 'before_or_equal:today']
         ];
     }
 
@@ -68,8 +68,8 @@ class RegisterRequest extends FormRequest
             'mail_address.email' => '有効なメールアドレスを入力してください。',
             'mail_address.unique' => '既に登録されています。',
             'date.date' => '入力された日付が存在しません。',
-            'date.before' => ':dateより前の日付を入力してください。',
-            'date.after' => ':dateより後の日付を入力してください。',
+            'date.before_or_equal' => ':dateより前の日付を入力してください。',
+            'date.after_or_equal' => ':dateより後の日付を入力してください。',
             'password.confirmed' => 'パスワードが一致していません。'
         ];
     }
