@@ -18,7 +18,8 @@
           @if($post->user_id == auth()->id())
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <!-- <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a> -->
+            <span class="delete-modal-open" post_id="{{ $post->id }}">削除</span>
           </div>
           @endif
         </div>
@@ -85,6 +86,22 @@
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
           <input type="submit" class="btn btn-primary d-block" value="編集">
+        </div>
+      </div>
+      {{ csrf_field() }}
+    </form>
+  </div>
+</div>
+<!-- 削除モーダル -->
+<div class="modal js-delete-modal">
+  <div class="modal__bg js-delete-modal-close"></div>
+  <div class="modal__content">
+    <p>本当に削除してよろしいですか？</p>
+    <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="get">
+      <div class="w-100">
+        <div class="w-50 m-auto delete-modal-btn d-flex">
+          <a class="js-delete-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+          <input type="submit" class="btn btn-primary d-block" value="削除">
         </div>
       </div>
       {{ csrf_field() }}

@@ -171,7 +171,8 @@ li {
   justify-content: space-between;
 }
 
-.edit-modal-open {
+.edit-modal-open,
+.delete-modal-open {
   cursor: pointer;
 }
 
@@ -180,7 +181,8 @@ li {
   resize: none;
 }
 
-.edit-modal-btn {
+.edit-modal-btn,
+.delete-modal-btn {
   justify-content: space-between;
 }
 
