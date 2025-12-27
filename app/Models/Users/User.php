@@ -80,8 +80,4 @@ class User extends Authenticatable
         return Like::where('like_user_id', Auth::id());
     }
 
-    //講師かどうか
-    public function isInstructor(): bool{
-        return $this->role != '4';
-    }
 }
