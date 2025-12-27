@@ -6,7 +6,9 @@
       <select class="w-100" form="postCreate" name="post_category_id">
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}">
-        <!-- サブカテゴリー表示 -->
+          @foreach($main_category->subCategories as $sub_category)
+          <option label="{{ $sub_category->sub_category }}" value="{{ $sub_category->id }}"></option>
+          @endforeach
         </optgroup>
         @endforeach
       </select>
@@ -35,11 +37,32 @@
     <div class="category_area mt-5 p-5">
       <div class="">
         <p class="m-0">メインカテゴリー</p>
+        @error('main_category_name')
+        <p>{{ $message }}</p>
+        @enderror
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
+        <input type="hidden" name="form_id" value="main" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
-      <!-- サブカテゴリー追加 -->
+      <div class="">
+        <p class="m-0">サブカテゴリー</p>
+        @error('main_category_id')
+        <p>{{ $message }}</p>
+        @enderror
+        @error('sub_category_name')
+        <p>{{ $message }}</p>
+        @enderror
+        <select name="main_category_id" id="main_category_id" form="subCategoryRequest">
+          @foreach($main_categories as $main_category)
+          <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}"></option>
+          @endforeach
+        </select>
+        <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
+        <input type="hidden" name="form_id" value="sub" form="subCategoryRequest">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
+      </div>
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+      <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
     </div>
   </div>
   @endcan
