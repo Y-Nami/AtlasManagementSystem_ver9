@@ -77,6 +77,16 @@ class PostsController extends Controller
     }
 
     public function commentCreate(Request $request){
+        $validated = $request->validate(
+            [
+                'comment' => 'required|string|max:250'
+            ],
+            [
+                'comment.required' => 'コメントを記入してください。',
+                'comment.string' => 'コメントは文字列のみ入力可能です。',
+                'comment.max' => ':max文字以下で入力してください。'
+            ]
+            );
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
