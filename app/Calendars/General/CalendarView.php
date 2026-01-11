@@ -66,6 +66,7 @@ class CalendarView{
         }else{
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<p>受付終了</p>';
+            $html[] = '<input name="getPart[]" value="" type="hidden" form="reserveParts">';
           }else{
             $html[] = $day->selectPart($day->everyDay());
           }
