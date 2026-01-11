@@ -32,7 +32,7 @@
       </div>
       <div class="w-50 m-auto delete-modal-btn d-flex">
         <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-        <button type="submit" class="btn btn-primary d-block" form="deleteParts">削除</button>
+        <button type="submit" class="btn btn-primary d-block" form="deleteParts">キャンセル</button>
       </div>
     </div>
   </div>
