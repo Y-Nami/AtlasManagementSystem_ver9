@@ -60,8 +60,12 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'参加</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            // $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" form="deleteParts">'. $reservePart .'</button>';
+            $reserveDay = $day->everyDay();
+            $html[] = '<button class="btn btn-danger p-0 w-75 delete-modal-open" style="font-size:12px" target_day="'.$reserveDay.'" target_part="'.$reservePart.'" reserve_setting_id="'.$day->authReserveDate($reserveDay)->first()->id.'" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" >'. $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<input type="hidden" name="user_id" value="'.Auth::id().'" form="deleteParts">';
+            // $html[] = '<input type="hidden" name="reserve_setting_id" value="'.$day->authReserveDate($reserveDay)->first()->id.'" form="deleteParts">';
           }
         }else{
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){

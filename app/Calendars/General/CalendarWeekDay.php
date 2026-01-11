@@ -83,7 +83,7 @@ class CalendarWeekDay{
    }
 
    function authReserveDate($reserveDate){
-     return Auth::user()->reserveSettings->where('setting_reserve', $reserveDate);
+     return Auth::user()->reserveSettings()->where('setting_reserve', $reserveDate);
    }
 
 }

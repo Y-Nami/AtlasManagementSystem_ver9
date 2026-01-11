@@ -13,4 +13,28 @@
     </div>
   </div>
 </div>
+<!-- 削除モーダル -->
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <div class="w-100">
+      <div class="m-auto pt-3 pb-3">
+        <p>
+          <span>予約日：</span>
+          <span class="target_day"></span>
+        </p>
+        <p>
+          <span>時間：</span>
+          <span class="reserve_part"></span>
+        </p>
+        <input type="hidden" class="reserve_setting_id" name="reserve_setting_id" value="" form="deleteParts">
+        <p>上記の予約をキャンセルしてもよろしいですか？</p>
+      </div>
+      <div class="w-50 m-auto delete-modal-btn d-flex">
+        <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+        <button type="submit" class="btn btn-primary d-block" form="deleteParts">削除</button>
+      </div>
+    </div>
+  </div>
+</div>
 </x-sidebar>
