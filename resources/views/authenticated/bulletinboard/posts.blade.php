@@ -26,27 +26,43 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25">
-    <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
+  <!-- 検索バー -->
+  <div class="other_area w-25">
+    <div class="m-4">
+      <div class="w-100">
+        <a href="{{ route('post.input') }}" class="w-100 btn btn-primary">投稿</a>
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
-      <ul>
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}">
-          <span>{{ $category->main_category }}<span>
-            <ul class="sub_categories">
-          @foreach($category->subCategories as $sub_category)
-            <li><input type="submit" name="category_word" class="category_btn" value="{{ $sub_category->sub_category }}" form="postSearchRequest"></li>
+      <div class="d-flex align-items-center flex-wrap mt-1">
+        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest" class="w-75 form-control rounded-end-0">
+        <input type="submit" value="検索" form="postSearchRequest" class="btn btn-primary w-25 rounded-start-0">
+      </div>
+      <div class="d-flex align-items-center flex-wrap mt-1">
+        <input type="submit" name="like_posts" class="btn btn-primary w-50 bg-pink" value="いいねした投稿" form="postSearchRequest">
+        <input type="submit" name="my_posts" class="btn btn-primary w-50 bg-yellow" value="自分の投稿" form="postSearchRequest">
+      </div>
+      <div class="mt-2 font-size-14">
+        <p>カテゴリー検索</p>
+        <ul>
+          @foreach($categories as $category)
+          <li class="main_categories" category_id="{{ $category->id }}">
+              <div class="main_category_wrap">
+                <p class="main_category">{{ $category->main_category }}</p>
+                <p class="angle_mark">
+                  <span class="fas fa-angle-down angle1"></span>
+                  <span class="fas fa-angle-up angle2 hidden"></span>
+                </p>
+              <div>
+              <ul class="sub_categories">
+                @foreach($category->subCategories as $sub_category)
+                <li class="sub_category">
+                  <input type="submit" name="category_word" class="" value="{{ $sub_category->sub_category }}" form="postSearchRequest">
+                </li>
+                @endforeach
+              </ul>
+          </li>
           @endforeach
-          </ul>
-        </li>
-        @endforeach
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>

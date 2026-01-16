@@ -9,8 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
@@ -20,15 +20,15 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
-                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+                <p><a href="{{ route('top.show') }}"><span class="fas fa-home"></span> マイページ</a></p>
+                <p><a href="/logout"><span class="fas fa-sign-out-alt"></span> ログアウト</a></p>
+                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}"><span class="far fa-calendar-alt"></span> スクール予約</a></p>
                 @can('admin')
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}"><span class="far fa-calendar-check"></span> スクール予約確認</a></p>
+                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"><span class="far fa-calendar-plus"></span> スクール枠登録</a></p>
                 @endcan
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p><a href="{{ route('post.show') }}"><span class="far fa-comment-dots"></span> 掲示板</a></p>
+                <p><a href="{{ route('user.show') }}"><span class="fas fa-user-friends"></span> ユーザー検索</a></p>
             </div>
             <div class="main-container">
                 {{ $slot }}

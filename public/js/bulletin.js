@@ -63,4 +63,18 @@ $(function () {
     return false;
   });
 
+  // カテゴリ開閉
+  $('.main_categories').on('click', function () {
+    if ($(this).find('.angle2').hasClass('hidden')) {
+      $(this).find('.sub_categories').fadeIn();
+      $(this).find('.angle1').addClass('hidden');
+      $(this).find('.angle2').removeClass('hidden');
+    } else {
+      $(this).find('.sub_categories').fadeOut();
+      $(this).find('.angle1').removeClass('hidden');
+      $(this).find('.angle2').addClass('hidden');
+    }
+    return false;
+  });
+
 });

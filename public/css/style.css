@@ -150,6 +150,17 @@ li {
   color: red;
 }
 
+/* 検索バー */
+.rounded-start-0 {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.rounded-end-0 {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 /* 掲示板 詳細画面 */
 .contributor {
   font-size: 12px;
@@ -231,12 +242,62 @@ li {
   border: none;
   background: #999;
   color: #FFF;
+  cursor: pointer;
 }
 
-.main_categories span,
-.sub_categories li input {
-  list-style: none;
+.bg-pink {
+  background-color: #e38eab;
+  border-color: #e38eab;
+}
+
+.bg-yellow {
+  background-color: #ebbc5d;
+  border-color: #ebbc5d;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.sub_categories {
+  display: none;
+  margin-left: 1em;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sub_categories.hidden {}
+
+.main_category_wrap {
+  position: relative;
+}
+
+.main_category,
+.sub_category {
+  border-bottom: 1px solid #000000;
   cursor: pointer;
+}
+
+.sub_category input {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.angle_mark span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.angle_mark span.hidden {
+  display: none;
 }
 
 /* ユーザー検索 */
