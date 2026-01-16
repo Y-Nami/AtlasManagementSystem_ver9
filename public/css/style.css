@@ -39,6 +39,12 @@ li {
 }
 
 /* スクール予約関連 */
+.calendar_wrap {
+  width: fit-content;
+  height: fit-content;
+  background-color: #ffffff;
+}
+
 .day-blank {
   background: #D3D3D3;
 }
@@ -78,6 +84,18 @@ li {
 
 .adjust-table-btn {
   width: 70%;
+}
+
+.r_d_table {
+  padding: 5px;
+}
+
+.r_d_tr1 {
+  background-color: #03AAD2;
+}
+
+.r_d_tr:nth-child(odd) {
+  background-color: #e5f6fa;
 }
 
 /* モーダル */
