@@ -59,10 +59,10 @@ class RegisterRequest extends FormRequest
 
     public function messages(){
         return[
-            '*.required' => '必ず入力してください。',
+            '*.required' => ':attributeは必ず入力してください。',
             '*.string' => ':attributeは文字列である必要があります。',
-            '*.min' => ':min文字以上で入力してください。',
-            '*.max' => ':max文字以下で入力してください。',
+            '*.min' => ':attributeは:min文字以上で入力してください。',
+            '*.max' => ':attributeは:max文字以下で入力してください。',
             'over_name_kana.regex' => 'セイはカタカナで入力してください。',
             'under_name_kana.regex' => 'メイはカタカナで入力してください。',
             'mail_address.email' => '有効なメールアドレスを入力してください。',
