@@ -36,22 +36,22 @@
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
-        <p class="m-0">メインカテゴリー</p>
         @error('main_category_name')
-        <p>{{ $message }}</p>
+        <p class="error_message">{{ $message }}</p>
         @enderror
+        <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
         <input type="hidden" name="form_id" value="main" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <div class="">
-        <p class="m-0">サブカテゴリー</p>
         @error('main_category_id')
-        <p>{{ $message }}</p>
+        <p class="error_message">{{ $message }}</p>
         @enderror
         @error('sub_category_name')
-        <p>{{ $message }}</p>
+        <p class="error_message">{{ $message }}</p>
         @enderror
+        <p class="m-0">サブカテゴリー</p>
         <select name="main_category_id" id="main_category_id" form="subCategoryRequest">
           @foreach($main_categories as $main_category)
           <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}"></option>

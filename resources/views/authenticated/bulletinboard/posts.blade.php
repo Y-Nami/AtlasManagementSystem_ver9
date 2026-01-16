@@ -54,7 +54,7 @@
               <div>
               <ul class="sub_categories">
                 @foreach($category->subCategories as $sub_category)
-                <li class="sub_category">
+                <li class="sub_category mb-3">
                   <input type="submit" name="category_word" class="" value="{{ $sub_category->sub_category }}" form="postSearchRequest">
                 </li>
                 @endforeach

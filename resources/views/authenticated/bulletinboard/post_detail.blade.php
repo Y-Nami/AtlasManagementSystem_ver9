@@ -9,8 +9,9 @@
           @if($errors->hasAny(['post_title','post_body']))
             @foreach(['post_title','post_body'] as $field)
               @foreach($errors->get($field) as $error)
-                {{ $error }}
-                <br>
+                <p class="error_message">
+                  <span>{{ $error }}</span>
+                </p>
               @endforeach
             @endforeach
           @endif
@@ -55,7 +56,7 @@
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
         @error('comment')
-        <p>{{ $message }}</p>
+        <p class="error_message">{{ $message }}</p>
         @enderror
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
