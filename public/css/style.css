@@ -260,14 +260,8 @@ li {
   font-size: 14px;
 }
 
-.sub_categories {
-  display: none;
-  margin-left: 1em;
-  opacity: 1;
-  visibility: visible;
-}
-
-.main_category_wrap {
+.main_category_wrap,
+.search_conditions {
   position: relative;
 }
 
@@ -277,7 +271,8 @@ li {
   cursor: pointer;
 }
 
-.sub_category input {
+.sub_category input,
+.s_reset input {
   appearance: none;
   -webkit-appearance: none;
   background: none;
@@ -288,27 +283,37 @@ li {
   cursor: pointer;
 }
 
-.angle_mark span {
+.angle_mark span,
+.s_angle1,
+.s_angle2 {
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
 }
 
-.angle_mark span.hidden {
+.angle_mark span.hidden,
+.s_angle1.hidden,
+.s_angle2.hidden {
   display: none;
+}
+
+.sub_categories,
+.search_conditions_inner {
+  display: none;
+  margin-left: 1em;
 }
 
 /* ユーザー検索 */
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
+  /* width: 800px; */
   margin: 10px auto;
   height: 80vh;
   overflow: scroll;
   padding: 10px;
-  background: #FFF;
+  /* background: #FFF; */
   border-radius: 5px;
 }
 
@@ -317,17 +322,70 @@ li {
 }
 
 .one_person {
-  width: 250px;
-  height: 250px;
+  margin: 5px;
+  padding: 5px;
+  width: 240px;
+  height: 240px;
+  border-radius: 10px;
+}
+
+.search_area {
+  padding: 20px;
 }
 
 .search_conditions span {
   cursor: pointer;
 }
 
-.search_conditions_inner {
+/* .search_conditions_inner {
   display: none;
   background: #FFF;
+} */
+
+.s_field input,
+.s_field select,
+.s_add_field select {
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e5e9;
+}
+
+.s_field input {
+  padding: 8px;
+}
+
+.s_field select {
+  width: 40%;
+  min-width: 100px;
+  padding: 5px;
+}
+
+.s_add {
+  display: inline-block;
+  border-bottom: 3px solid #e0e5e9;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.s_add_field select {
+  width: 50%;
+  min-width: 120px;
+  padding: 5px;
+}
+
+.s_subject {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.s_submit,
+.s_reset {
+  margin: 5px;
+}
+
+.s_reset {
+  text-align: center;
+  color: #007bff;
 }
 
 .subject_edit_btn {
@@ -336,6 +394,13 @@ li {
   cursor: pointer;
 }
 
-.subject_inner {
+.subject_inner,
+.s_p_angle1.hidden,
+.s_p_angle2.hidden {
   display: none;
+}
+
+.subject_inner_items {
+  display: inline-block;
+  margin-right: 10px;
 }

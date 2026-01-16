@@ -1,9 +1,8 @@
 <x-sidebar>
-<p>ユーザー検索</p>
 <div class="search_content w-100 border d-flex">
-  <div class="reserve_users_area">
+  <div class="reserve_users_area w-75">
     @foreach($users as $user)
-    <div class="border one_person">
+    <div class="border one_person bg-white">
       <div>
         <span>ID : </span><span>{{ $user->id }}</span>
       </div>
@@ -54,36 +53,42 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 border">
+  <!-- 右側 -->
+  <div class="search_area w-25">
     <div class="">
-      <div>
-        <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
+      <div class="s_field mb-3">
+        <label class="w-100 h5">検索</label>
+        <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest" class="">
       </div>
-      <div>
-        <lavel>カテゴリ</lavel>
+      <div class="s_field mb-3">
+        <label class="w-100">カテゴリ</label>
         <select form="userSearchRequest" name="category">
           <option value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
       </div>
-      <div>
-        <label>並び替え</label>
+      <div class="s_field mb-3">
+        <label class="w-100">並び替え</label>
         <select name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>
       </div>
-      <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+      <div class="s_add_field">
+        <p class="m-0 search_conditions">
+          <span class="s_add">検索条件の追加</span>
+          <span class="fas fa-angle-down s_angle1">　</span>
+          <span class="fas fa-angle-up s_angle2 hidden">　</span>
+        </p>
         <div class="search_conditions_inner">
-          <div>
-            <label>性別</label>
+          <div class="mb-3">
+            <label class="w-100">性別</label>
             <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
             <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
             <span>その他</span><input type="radio" name="sex" value="3" form="userSearchRequest">
           </div>
-          <div>
-            <label>権限</label>
+          <div class="mb-3">
+            <label class="w-100">権限</label>
             <select name="role" form="userSearchRequest" class="engineer">
               <option selected disabled>----</option>
               <option value="1">教師(国語)</option>
@@ -92,22 +97,23 @@
               <option value="4" class="">生徒</option>
             </select>
           </div>
-          <div class="selected_engineer">
-            <label>選択科目</label>
-            @foreach($subjects as $subject)
-            <p>
-              {{ $subject->subject }}<input type="checkbox" name="subjects[]" value="{{ $subject->id }}" form="userSearchRequest">
-            </p>
-            @endforeach
-            </select>
+          <div class="selected_engineer mb-3">
+            <label class="w-100">選択科目</label>
+            <div>
+              @foreach($subjects as $subject)
+              <span class="s_subject">
+                {{ $subject->subject }}<input type="checkbox" name="subjects[]" value="{{ $subject->id }}" form="userSearchRequest">
+              </span>
+              @endforeach
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <input type="reset" value="リセット" form="userSearchRequest">
+      <div class="s_submit">
+        <input type="submit" name="search_btn" value="検索" form="userSearchRequest" class="btn btn-primary w-100">
       </div>
-      <div>
-        <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
+      <div class="s_reset">
+        <input type="reset" value="リセット" form="userSearchRequest" class="justify-content-center">
       </div>
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
