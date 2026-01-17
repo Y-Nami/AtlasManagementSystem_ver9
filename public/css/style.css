@@ -16,10 +16,16 @@ li {
   list-style: none;
 }
 
+.ymd_border {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid;
+}
+
 /* サイドバー */
 .sidebar {
   width: 150px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
 }
