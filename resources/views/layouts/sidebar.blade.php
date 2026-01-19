@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body class="all_content">
-        <div class="d-flex">
+        <div class="d-flex min-vh-100">
             <div class="sidebar">
                 <p><a href="{{ route('top.show') }}"><span class="fas fa-home"></span> マイページ</a></p>
                 <p><a href="/logout"><span class="fas fa-sign-out-alt"></span> ログアウト</a></p>

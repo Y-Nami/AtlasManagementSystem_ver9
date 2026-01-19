@@ -32,6 +32,8 @@ li {
 
 .main-container {
   width: 100%;
+  min-height: 0;
+  overflow-x: auto;
 }
 
 .sidebar p a {
